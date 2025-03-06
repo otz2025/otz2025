@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://otz2025.github.io/otz2025/sitemap.xml
-
