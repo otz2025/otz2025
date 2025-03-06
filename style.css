@@ -1,0 +1,48 @@
+.news-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 60px;
+    width: calc(50% - 10px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.news-item img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    border: 2px solid white;
+    object-fit: cover;
+    margin-top: -40px;
+    margin-bottom: 20px;
+}
+
+.news-item .text {
+    text-align: center;
+}
+
+.news-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.news-item p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.news-item a {
+    color: #007BFF; /* Синий цвет */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+.news-item a:hover {
+    color: #0056b3; /* Темно-синий цвет при наведении */
+    text-decoration: underline; /* Подчеркивание при наведении */
+}

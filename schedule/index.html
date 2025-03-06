@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание - Over Time Zvenigorod</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2a2a2a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden; /* Отключаем горизонтальный скролл для всей страницы */
+        }
+
+        /* Фиксированное меню */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        header .logo {
+            position: absolute;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ccc;
+        }
+
+        /* Основной контент */
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+            box-sizing: border-box;
+            text-align: center; /* Выравнивание текста по центру */
+            margin-top: 100px; /* Отступ сверху для видимости заголовка */
+            width: 100%; /* Ограничиваем ширину контента */
+        }
+
+        .content h2 {
+            font-size: 36px; /* Увеличенный размер шрифта */
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-top: 1px solid black;
+            position: relative; /* Для позиционирования псевдоэлемента */
+            display: inline-block; /* Чтобы прямоугольник был по ширине текста */
+            padding: 15px 30px; /* Увеличенные отступы для текста */
+        }
+
+        /* Прямоугольник за заголовком */
+        .content h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dd4710; /* Цвет прямоугольника */
+            z-index: -1; /* Прямоугольник позади текста */
+            border-radius: 5px; /* Закругленные углы */
+        }
+
+        /* Блок с матчами */
+        .match-results {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .match-result {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px; /* Добавляем промежуток между элементами */
+        }
+
+        .match-results .team-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px; /* Фиксированная ширина для логотипов */
+        }
+
+        .match-results .team-name {
+            margin-top: 8px; /* Отступ между логотипом и названием */
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .team-logo img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 20px;
+            min-width: 80px; /* Минимальная ширина для счета */
+            text-align: center; /* Выравнивание текста по центру */
+        }
+
+        .date {
+            font-size: 18px;
+            color: #ccc;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Заголовок таблицы */
+        .table-header h3 {
+            font-size: 32px; /* Увеличенный размер шрифта */
+            margin-bottom: 15px; /* Увеличенный отступ снизу */
+            display: inline-block; /* Чтобы линия была по ширине текста */
+            padding: 10px 20px; /* Увеличенные отступы для текста */
+        }
+
+        .table-header hr {
+            border: 0;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 0;
+        }
+
+        /* Футер */
+        footer {
+            background-color: #000;
+            padding: 40px 20px;
+            margin-top: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center; /* Выравнивание текста по центру */
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            align-items: center; /* Выравнивание иконок по центру */
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1); /* Увеличение при наведении */
+            opacity: 0.8; /* Легкое затемнение */
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            header .logo {
+                position: static;
+                margin-bottom: 10px;
+                text-align: center; /* Центрируем логотип */
+            }
+
+            header nav {
+                display: flex;
+                flex-direction: row; /* Горизонтальное расположение кнопок */
+                justify-content: center; /* Центрируем кнопки по горизонтали */
+                gap: 10px; /* Уменьшаем отступ между кнопками */
+                flex-wrap: wrap; /* Если кнопок много, они переносятся на новую строку */
+            }
+
+            .content {
+                margin-top: 80px; /* Уменьшаем отступ для мобильных устройств */
+            }
+
+            .content h2 {
+                font-size: 28px; /* Уменьшаем размер шрифта для мобильных */
+                padding: 10px 20px; /* Уменьшаем отступы */
+            }
+
+            .table-header h3 {
+                font-size: 24px; /* Уменьшаем размер шрифта для мобильных */
+                padding: 8px 16px; /* Уменьшаем отступы */
+            }
+
+            .team-logo img {
+                width: 40px; /* Уменьшаем размер логотипов для мобильных */
+                height: 40px;
+            }
+
+            .score {
+                font-size: 20px; /* Уменьшаем размер шрифта для мобильных */
+            }
+
+            .date {
+                font-size: 16px; /* Уменьшаем размер шрифта для мобильных */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="logo">OVER TIME ZWENIGOROD</div>
+        <nav>
+            <a href="/OverTimeZwenigorod/">Главная</a>
+            <a href="/OverTimeZwenigorod/news">Новости</a>
+            <a href="/OverTimeZwenigorod/table">Соревнования</a>
+            <!--<a href="/OverTimeZwenigorod/teams">Команды</a>-->
+        </nav>
+    </header>
+
+    <div class="content">
+        <h2>Расписание</h2>
+
+        <!-- Блок результатов (События) -->
+        <div class="match-results">
+            <div class="table-header">
+                <h3>Матчи OPENING NIGHT</h3>
+                <hr>
+            </div>
+            <!-- Первый матч -->
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/PPATROL2.png" alt="Paw patrol">
+                        <div class="team-name">Paw Patrol</div>
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/RWE2.png" alt="RWE">
+                        <div class="team-name">RWE</div>
+                    </div>
+                </div>
+                <div class="date">10 июня 16:00</div>
+            </div>
+
+            <!-- Второй матч -->
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/BULLDOGS2.png" alt="BULLDOGS">
+                        <div class="team-name">Bulldogs</div>
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/KITTY BOYS.png" alt="KITTY BOYS">
+                        <div class="team-name">Kitty Boys</div>
+                    </div>
+                </div>
+                <div class="date">10 июня 18:00</div>
+            </div>
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/TEXAS NIGGAS2.png" alt="TEXAS NIGGAS">
+                        <div class="team-name">Texas Niggers</div>
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/BULLDOGS2.png" alt="BULLDOGS">
+                        <div class="team-name">Bulldogs</div>
+                    </div>
+                </div>
+                <div class="date">12 июня 15:00</div>
+            </div>
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/TEXAS NIGGAS2.png" alt="TEXAS NIGGAS">
+                        <div class="team-name">Texas Niggers</div>
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/PPATROL2.png" alt="PPATROL">
+                        <div class="team-name">Paw Patrol</div>
+                    </div>
+                </div>
+                <div class="date">13 июня 16:00</div>
+            </div>
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/RWE2.png" alt="team1">
+                        <div class="team-name">RWE</div>
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/KITTY BOYS.png" alt="team2">
+                        <div class="team-name">Kitty Boys</div>
+                    </div>
+                </div>
+                <div class="date">13 июня 18:00</div>
+            </div>
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/KITTY BOYS.png" alt="team1">
+                        <div class="team-name">Kitty Boys</div>
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/TEXAS NIGGAS2.png" alt="team2">
+                        <div class="team-name">Texas Niggers</div>
+                    </div>
+                </div>
+                <div class="date">16 июня 16:00</div>
+            </div>
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/BULLDOGS2.png" alt="team1">
+                        <div class="team-name">Bulldogs</div>
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/RWE2.png" alt="team2S">
+                        <div class="team-name">RWE</div>
+                    </div>
+                </div>
+                <div class="date">16 июня 18:00</div>
+            </div>
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/PPATROL2.png" alt="team1">
+                        <div class="team-name">Paw Patrol</div>
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/BULLDOGS2.png" alt="team2">
+                        <div class="team-name">Bulldogs</div>
+                    </div>
+                </div>
+                <div class="date">17 июня 15:00</div>
+            </div>
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/RWE2.png" alt="team1">
+                        <div class="team-name">RWE</div>
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/TEXAS NIGGAS2.png" alt="team2S">
+                        <div class="team-name">Texas Niggers</div>
+                    </div>
+                </div>
+                <div class="date">19 июня 16:00</div>
+            </div>
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/PPATROL2.png" alt="team1">
+                        <div class="team-name">Paw Patrol</div>
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <img src="/OverTimeZwenigorod/img/KITTY BOYS.png" alt="team2S">
+                        <div class="team-name">Kitty Boys</div>
+                    </div>
+                </div>
+                <div class="date">19 июня 18:00</div>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <!-- Логотипы TikTok и изображение сайта -->
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@otz.summer.league?_t=ZS-8uNhlZxvA0N&_r=1" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z"/>
+                    </svg>
+                </a>
+                <a href="https://voho4534.github.io/OverTimeZwenigorod/" target="_blank">
+                    <!-- Замените src на путь к вашему изображению -->
+                    <img src="/OverTimeZwenigorod/img/OTZ3.png" alt="Логотип сайта">
+                </a>
+            </div>
+
+            <p>© 2025 Over Time Zvenigorod. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>

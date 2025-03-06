@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости - Over Time Zvenigorod</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2a2a2a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Фиксированное меню */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        header .logo {
+            position: absolute;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+            justify-content: center; /* Центрирование по горизонтали */
+            align-items: center; /* Центрирование по вертикали */
+            margin: 0 auto; /* Центрирование навигации */
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px !important; /* Добавлено !important */
+            transition: color 0.3s ease;
+            white-space: nowrap; /* Запрет переноса текста */
+        }
+
+        header nav a:hover {
+            color: #ccc;
+        }
+
+        /* Основной контент */
+        .content {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 100px;
+            flex: 1;
+            box-sizing: border-box;
+            text-align: center; /* Центрирование содержимого по горизонтали */
+        }
+
+        .content h2 {
+            font-size: 40px;
+            margin: 40px auto 40px; /* Увеличенный отступ сверху */
+            line-height: 1.2;
+            display: inline-block; /* Чтобы прямоугольник был по ширине текста */
+            padding: 20px 40px; /* Отступы для текста */
+            background-color: #dd4710; /* Цвет прямоугольника */
+            border-radius: 5px; /* Закругленные углы */
+        }
+
+        /* Блок с новостями */
+        .news {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            justify-content: center;
+        }
+
+        .news-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: calc(100% - 40px);
+            max-width: 800px;
+            box-sizing: border-box;
+            margin-top: 60px;
+            text-align: center; /* Центрирование текста внутри блока новости */
+        }
+
+        .news-item img {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            border: 2px solid white;
+            object-fit: cover;
+            margin: -60px auto 30px;
+            display: block;
+        }
+
+        .news-item .text {
+            padding: 0 20px;
+            text-align: center; /* Центрирование текста внутри блока новости */
+        }
+
+        .news-item h3 {
+            text-align: center; /* Центрирование заголовка */
+            margin-bottom: 20px; /* Отступ снизу для заголовка */
+        }
+
+        .news-item p {
+            line-height: 1.6;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Футер */
+        footer {
+            background-color: #000;
+            padding: 60px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            align-items: center; /* Выравнивание иконок по центру */
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1); /* Увеличение при наведении */
+            opacity: 0.8; /* Легкое затемнение */
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            header .logo {
+                position: static;
+                margin-bottom: 10px;
+                text-align: center; /* Центрирование логотипа */
+            }
+
+            header nav {
+                flex-direction: row; /* Горизонтальное расположение пунктов меню */
+                gap: 10px;
+                align-items: center; /* Центрирование пунктов меню */
+            }
+
+            .content {
+                padding-top: 120px;
+                padding-bottom: 40px;
+            }
+
+            .content h2 {
+                font-size: 32px;
+                margin: 60px auto 30px; /* Увеличенный отступ сверху для мобильных */
+                padding: 15px 30px; /* Уменьшенные отступы для мобильных */
+            }
+
+            .news-item {
+                width: 100%;
+                margin-top: 40px;
+                padding: 20px;
+            }
+
+            .news-item img {
+                height: 200px;
+                margin: -40px auto 20px;
+            }
+
+            footer {
+                padding: 40px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header nav {
+                gap: 8px; /* Уменьшение отступов между пунктами меню */
+            }
+
+            .content {
+                padding-top: 100px;
+                padding: 20px;
+            }
+            
+            .content h2 {
+                font-size: 28px;
+                margin: 80px auto 20px; /* Еще больше отступ сверху для маленьких экранов */
+                padding: 10px 20px; /* Уменьшенные отступы для мобильных */
+            }
+            
+            .news-item {
+                margin-top: 30px;
+                padding: 15px;
+            }
+            
+            .news-item .text {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="logo">OVER TIME ZWENIGOROD</div>
+        <nav>
+            <a href="/OverTimeZwenigorod/">Главная</a>
+            <a href="/OverTimeZwenigorod/news">Новости</a>
+            <a href="/OverTimeZwenigorod/table">Соревнования</a>
+            <!--<a href="/OverTimeZwenigorod/teams">Команды</a>-->
+        </nav>
+    </header>
+
+    <div class="content">
+        <h2>Новости</h2>
+        <div class="news">
+            <div class="news-item">
+                <img src="/OverTimeZwenigorod/img/NEWS2.png" alt="Новость 1">
+                <div class="text">
+                    <h3>Громкие трейды в OVER TIME ZWENIGOROD: RWE, KITTY BOYS и TEXAS NIGGERS обменялись игроками!</h3>
+                    <p>В OVER TIME ZWENIGOROD произошли важные изменения, вызвавшие бурное обсуждение среди болельщиков. Главной новостью стало подписание командой RWE нового игрока — Владимира Шипко. Этот шаг стал неожиданностью для многих, и теперь фанаты гадают, какую роль Шипко сыграет в обновленном составе команды.  
+
+Кроме того, команда KITTY BOYS объявила о подписании Артема Лагуткина. В связи с этим Александр Бабенко покинул команду и вернулся в свою начальную команду — TEXAS NIGGERS. Теперь фанаты с нетерпением ждут, как новые игроки проявят себя на поле. Следите за новостями на OVER TIME ZWENIGOROD!</p>
+                </div>
+            </div>
+            <!--<div class="news-item">
+                <img src="/OverTimeZwenigorod/img/news12.png" alt="Новость 2">
+                <div class="text">
+                    <h3>Новые правила лиги!</h3>
+                    <p>Администрация OVER TIME ZWENIGOROD представила обновленные правила лиги. Основное изменение — возрастное ограничение: теперь играть могут только игроки, родившиеся не позже 2009 года. Исключение сделано для капитана клуба PAW PATROL, который может быть старше.
+
+Отдельное внимание привлек Иван Карлюк, новый игрок TEXAS NIGGERS. Ему разрешили играть, несмотря на возраст, но если он начнет слишком сильно влиять на результаты команды, решение могут пересмотреть.
+
+Похожая ситуация, возможно, складывается и в клубе KATTY BOYS. По неподтвержденным данным, в команду заявлен новый игрок — Глеб Ежов. Пока неизвестно, будет ли для него сделано исключение, как для Карлюка, но эта история уже вызывает интерес у болельщиков.
+
+Новые правила вызвали споры среди клубов и болельщиков. Частичная отмена прошлых трейдов и исключения из правил ставят вопросы о справедливости.
+
+Следите за новостями на OVER TIME ZWENIGOROD, чтобы быть в курсе всех обновлений!</p>
+                </div>
+            </div>
+            <!-- Добавьте больше новостей по аналогии -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <!-- Логотип TikTok -->
+                <a href="https://www.tiktok.com/@otz.summer.league?_t=ZS-8uNhlZxvA0N&_r=1" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z"/>
+                    </svg>
+                </a>
+                <!-- Ваша картинка -->
+                <a href="https://voho4534.github.io/OverTimeZwenigorod/" target="_blank">
+                    <img src="/OverTimeZwenigorod/img/OTZ3.png" alt="Ваша картинка">
+                </a>
+            </div>
+            <p>© 2025 Over Time Zvenigorod. Все права защищены. Мы стараемся радовать вас свежими новостями каждую неделю!</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>

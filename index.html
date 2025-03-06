@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over Time Zvenigorod</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2a2a2a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Фиксированное меню */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        header .logo {
+            position: absolute;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ccc;
+        }
+
+        /* Hero-секция */
+        .hero {
+            height: 540px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('img/OTZ.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        /* Заголовок перед картинкой (только для десктопов) */
+        .hero h1 {
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        /* Показываем заголовок только на десктопах */
+        @media (min-width: 769px) {
+            .hero h1 {
+                display: block;
+            }
+        }
+
+        /* Основной контент */
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Блок с матчами */
+        .match-results {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .match-result {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .team-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .team-logo img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 20px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .date {
+            font-size: 18px;
+            color: #ccc;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Новости */
+        .news {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 60px; /* Увеличенный отступ сверху */
+            justify-content: center;
+        }
+
+        .news-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: calc(50% - 20px);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .news-item img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            border: 2px solid white;
+            object-fit: cover;
+            margin-top: -40px;
+            margin-bottom: 20px;
+        }
+
+        /* Стиль для ссылки "Читать далее" */
+        .read-more {
+            color: #dd4710;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .read-more:hover {
+            color: #ff6b3b;
+        }
+
+        /* Стиль для ссылки "Посмотреть полное расписание" */
+        .schedule-link {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .schedule-link a {
+            color: #dd4710; /* Оранжевый цвет */
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .schedule-link a:hover {
+            color: #ff6b3b; /* Более светлый оранжевый при наведении */
+        }
+
+        /* Футер */
+        footer {
+            background-color: #000;
+            padding: 40px 20px;
+            margin-top: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Стиль для скрытия слова "Абоюдно" */
+        .hidden {
+            display: none;
+        }
+
+        /* Адаптация */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            header .logo {
+                position: static;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            header nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                height: 300px;
+                background-size: contain;
+            }
+
+            .news-item {
+                width: 100%;
+            }
+
+            .social-links {
+                flex-direction: row;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="logo">OVER TIME ZWENIGOROD</div>
+        <nav>
+            <a href="/OverTimeZwenigorod/">Главная</a>
+            <a href="/OverTimeZwenigorod/news">Новости</a>
+            <a href="/OverTimeZwenigorod/table">Соревнования</a>
+            <!--<a href="/OverTimeZwenigorod/teams">Команды</a>-->
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>OVER TIME ZWENIGOROD</h1>
+    </div>
+
+    <div class="content">
+        <!-- Заголовок "События" -->
+        <h2>События</h2>
+        <div class="match-results">
+            <!-- Первый матч -->
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <div class="team-name">Paw Patrol</div>
+                        <img src="img/PPATROL2.png" alt="Paw patrol">
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <div class="team-name">RWE</div>
+                        <img src="img/RWE2.png" alt="RWE">
+                    </div>
+                </div>
+                <div class="date">10 июня 16:00</div>
+            </div>
+
+            <!-- Второй матч -->
+            <div class="match-result">
+                <div class="teams">
+                    <div class="team-logo">
+                        <div class="team-name">Bulldogs</div>
+                        <img src="img/BULLDOGS2.png" alt="BULLDOGS">
+                    </div>
+                    <div class="score">Не начался</div>
+                    <div class="team-logo">
+                        <div class="team-name">Kitty Boys</div>
+                        <img src="img/KITTY BOYS.png" alt="KITTY BOYS">
+                    </div>
+                </div>
+                <div class="date">10 июня 18:00</div>
+            </div>
+        </div>
+
+        <!-- Ссылка на расписание -->
+        <div class="schedule-link">
+            <a href="/OverTimeZwenigorod/schedule">Посмотреть полное расписание</a>
+        </div>
+
+        <!-- Заголовок "Новости" -->
+        <h2>Новости</h2>
+        <div class="news">
+            <div class="news-item">
+                <img src="img/NEWS2.png" alt="Новость 1">
+                <div class="text">
+                    <h3>Громкие трейды в OVER TIME ZWENIGOROD: RWE, KITTY BOYS и TEXAS NIGGERS обменялись игроками!</h3>
+                    <p>В OVER TIME ZWENIGOROD состоялся громкий обмен.</p>
+                    <a href="/OverTimeZwenigorod/news" class="read-more">Читать далее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <!-- Логотипы TikTok и изображение сайта -->
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@otz.summer.league?_t=ZS-8uNhlZxvA0N&_r=1" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z"/>
+                    </svg>
+                </a>
+                <a href="https://voho4534.github.io/OverTimeZwenigorod/" target="_blank">
+                    <img src="/OverTimeZwenigorod/img/OTZ3.png" alt="Логотип сайта">
+                </a>
+            </div>
+
+            <p>© 2025 Over Time Zvenigorod. Все права защищены. <a href="https://t.me/voho_dranik" style="color: white; text-decoration: none;" class="hidden">Абоюдно.</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Скрипт для изменения фона шапки при скролле
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Скрипт для показа слова "Абоюдно" при клике на текст в футере
+        const footerText = document.querySelector('footer p');
+        const hiddenLink = document.querySelector('footer .hidden');
+
+        footerText.addEventListener('click', () => {
+            hiddenLink.classList.remove('hidden'); // Показываем слово
+            setTimeout(() => {
+                hiddenLink.classList.add('hidden'); // Скрываем слово через 5 секунд
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
