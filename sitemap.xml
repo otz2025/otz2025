@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https:/otz2025.github.io/otz2025/</loc>
+        <loc>https://otz2025.github.io/otz2025/</loc>
         <lastmod>2023-10-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https:/otz2025.github.io/otz2025/table/</loc>
+        <loc>https://otz2025.github.io/otz2025/news</loc>
         <lastmod>2023-10-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://otz2025.github.io/otz2025/news/</loc>
+        <loc>https://otz2025.github.io/otz2025/table</loc>
         <lastmod>2023-10-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-    <!-- Добавьте другие страницы -->
+    <url>
+        <loc>https://otz2025.github.io/otz2025/schedule</loc>
+        <lastmod>2023-10-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>
