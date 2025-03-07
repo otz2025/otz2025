@@ -135,6 +135,79 @@
             margin: 10px 0;
         }
 
+        /* Заголовок таблицы */
+        .table-header {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .table-header h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: inline-block; /* Чтобы линия была по ширине текста */
+        }
+
+        .table-header hr {
+            border: 0;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 0;
+        }
+
+        /* Контейнер для таблицы с горизонтальным скроллом */
+        .table-container {
+            overflow-x: auto; /* Горизонтальная прокрутка для таблицы */
+            margin-top: 20px;
+            margin-bottom: 40px; /* Добавлен отступ снизу */
+            width: 100%;
+            -webkit-overflow-scrolling: touch; /* Плавный скролл на мобильных устройствах */
+        }
+
+        /* Таблица */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 600px; /* Минимальная ширина таблицы */
+        }
+
+        th, td {
+            padding: 16px; /* Увеличенные отступы для высоты строк */
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: 1px solid rgba(255, 255, 255, 0.2); /* Вертикальные линии */
+        }
+
+        th:last-child, td:last-child {
+            border-right: none; /* Убираем правую границу у последнего столбца */
+        }
+
+        th {
+            background-color: #dd4710;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Логотипы команд */
+        .team-logo {
+            width: 30px; /* Размер логотипа */
+            height: 30px;
+            vertical-align: middle;
+            margin-right: 10px; /* Отступ между логотипом и текстом */
+        }
+
+        /* Выравнивание логотипа и текста по горизонтали */
+        .team-cell {
+            display: flex;
+            align-items: center; /* Выравнивание по центру по вертикали */
+            justify-content: center; /* Выравнивание по центру по горизонтали */
+        }
+
         /* Футер */
         footer {
             background-color: #000;
@@ -223,6 +296,20 @@
             .team-info .team-name::after {
                 margin: 10px auto; /* Центрируем линию на мобильных */
             }
+
+            .table-header h3 {
+                font-size: 20px; /* Уменьшаем размер шрифта для мобильных */
+            }
+
+            th, td {
+                padding: 12px; /* Уменьшаем отступы в таблице для мобильных */
+                font-size: 14px; /* Уменьшаем размер шрифта для мобильных */
+            }
+
+            .team-logo {
+                width: 24px; /* Уменьшаем размер логотипа для мобильных */
+                height: 24px;
+            }
         }
 
         /* Стили для десктопов */
@@ -265,7 +352,49 @@
             </div>
         </div>
 
-        <!-- Добавьте другие команды по аналогии -->
+        <!-- Заголовок и линия над таблицей -->
+        <div class="table-header">
+            <h3>Турнирная таблица</h3>
+            <hr>
+        </div>
+
+        <!-- Таблица -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Место</th>
+                        <th>Команда</th>
+                        <th>И</th>
+                        <th>В</th>
+                        <th>П</th>
+                        <th>%</th>
+                        <th>Забито</th>
+                        <th>Пропущено</th>
+                        <th>+/-</th>
+                        <th>Очки</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Строки таблицы -->
+                    <tr>
+                        <td>5</td>
+                        <td class="team-cell">
+                            <img src="/otz2025/img/PPATROL2.png" alt="PPATROL" class="team-logo">
+                            PAW PATROL
+                        </td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Подвал -->
