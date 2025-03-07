@@ -12,7 +12,7 @@
     <!-- Open Graph метатеги для соцсетей и поисковиков -->
     <meta property="og:title" content="Команды - Over Time Zvenigorod">
     <meta property="og:description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Команды, игроки и история лиги.">
-    <meta property="og:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png"> <!-- Укажите полный URL логотипа -->
+    <meta property="og:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png">
     <meta property="og:url" content="https://otz2025.github.io/otz2025/teams/">
     <meta property="og:type" content="website">
 
@@ -20,7 +20,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Команды - Over Time Zvenigorod">
     <meta name="twitter:description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Команды, игроки и история лиги.">
-    <meta name="twitter:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png"> <!-- Укажите полный URL логотипа -->
+    <meta name="twitter:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png">
 
     <!-- Фавиконка -->
     <link rel="icon" type="image/png" href="/otz2025/img/OTZ3.png">
@@ -45,7 +45,6 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            overflow-x: hidden; /* Отключаем горизонтальный скролл для всей страницы */
         }
 
         /* Фиксированное меню */
@@ -158,20 +157,20 @@
         /* Контейнер для таблицы с горизонтальным скроллом */
         .table-container {
             overflow-x: auto; /* Горизонтальная прокрутка для таблицы */
-            margin-top: 20px;
-            margin-bottom: 40px; /* Добавлен отступ снизу */
             width: 100%;
+            max-width: 100%; /* Не выходит за пределы экрана */
             -webkit-overflow-scrolling: touch; /* Плавный скролл на мобильных устройствах */
+            margin-bottom: 20px; /* Отступ снизу */
         }
 
         /* Таблица */
         table {
             width: 100%;
-            max-width: 100%; /* Ограничиваем ширину таблицы */
             border-collapse: collapse;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 600px; /* Минимальная ширина таблицы */
         }
 
         th, td {
@@ -281,31 +280,31 @@
             }
 
             .team-info {
-                flex-direction: row; /* Логотип и текст по горизонтали на мобильных */
+                flex-direction: row; /* Логотип и текст по горизонтали */
                 align-items: center; /* Выравнивание по центру по вертикали */
                 justify-content: flex-start; /* Прижимаем к левому краю */
-                gap: 15px; /* Увеличиваем отступ между логотипом и текстом */
+                text-align: left; /* Текст выравниваем по левому краю */
             }
 
             .team-info img {
-                width: 80px; /* Увеличиваем размер логотипа для мобильных */
+                width: 80px; /* Уменьшаем размер логотипа для мобильных */
                 height: 80px;
             }
 
             .team-info .team-name {
-                font-size: 28px; /* Увеличиваем размер текста названия команды для мобильных */
-            }
-
-            .team-info .team-description {
-                font-size: 18px; /* Увеличиваем размер текста описания для мобильных */
+                font-size: 24px; /* Уменьшаем размер текста названия команды */
             }
 
             .team-info .team-name::after {
-                margin: 10px 0; /* Увеличиваем отступ линии */
+                margin: 10px 0; /* Линия по ширине текста */
+            }
+
+            .team-info .team-description {
+                font-size: 14px; /* Уменьшаем размер текста описания */
             }
 
             .table-header h3 {
-                font-size: 24px; /* Увеличиваем размер шрифта для мобильных */
+                font-size: 20px; /* Уменьшаем размер шрифта для мобильных */
             }
 
             th, td {
@@ -423,82 +422,23 @@
         </div>
     </footer>
 
-<script>
-    // Скрипт для изменения фона шапки при скролле
-    window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        header.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    <script>
+        // Скрипт для изменения фона шапки при скролле
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
-    // Скрипт для показа слова "Абоюдно" при клике на текст в футере
-    const footerText = document.querySelector('footer p');
-    const hiddenLink = document.querySelector('footer .hidden');
+        // Скрипт для показа слова "Абоюдно" при клике на текст в футере
+        const footerText = document.querySelector('footer p');
+        const hiddenLink = document.querySelector('footer .hidden');
 
-    if (footerText && hiddenLink) {
         footerText.addEventListener('click', () => {
             hiddenLink.classList.remove('hidden'); // Показываем слово
             setTimeout(() => {
                 hiddenLink.classList.add('hidden'); // Скрываем слово через 2 секунды
             }, 2000);
         });
-    }
-
-    // Скрипт для управления скроллом таблицы
-    (function() {
-        const containers = document.querySelectorAll('.table-container');
-        let isScrolling = false;
-        let startX, startY, scrollLeft, scrollTop;
-
-        containers.forEach(container => {
-            // Для тач-устройств
-            container.addEventListener('touchstart', touchStart, { passive: false });
-            container.addEventListener('touchmove', touchMove, { passive: false });
-            container.addEventListener('touchend', touchEnd, { passive: false });
-
-            // Для мыши
-            container.addEventListener('wheel', handleWheel, { passive: false });
-        });
-
-        function touchStart(e) {
-            isScrolling = true;
-            startX = e.touches[0].pageX - this.offsetLeft;
-            startY = e.touches[0].pageY - this.offsetTop;
-            scrollLeft = this.scrollLeft;
-            scrollTop = this.scrollTop;
-        }
-
-        function touchMove(e) {
-            if (!isScrolling) return;
-            
-            const x = e.touches[0].pageX - this.offsetLeft;
-            const y = e.touches[0].pageY - this.offsetTop;
-            const walkX = (x - startX) * 2;
-            const walkY = (y - startY) * 2;
-
-            // Проверяем, есть ли горизонтальный скролл
-            if (this.scrollWidth > this.clientWidth) {
-                e.preventDefault();
-                this.scrollLeft = scrollLeft - walkX;
-            }
-
-            // Блокируем вертикальный скролл
-            if (Math.abs(walkX) > Math.abs(walkY)) {
-                e.preventDefault();
-            }
-        }
-
-        function touchEnd() {
-            isScrolling = false;
-        }
-
-        function handleWheel(e) {
-            // Проверяем, есть ли горизонтальный скролл
-            if (this.scrollWidth > this.clientWidth) {
-                e.preventDefault();
-                this.scrollLeft += e.deltaX + e.deltaY;
-            }
-        }
-    })();
-</script>
+    </script>
 </body>
 </html>
