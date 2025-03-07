@@ -1,1 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Основные метатеги -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Награды - Over Time Zvenigorod</title>
+    <meta name="description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Награды, достижения и история лиги.">
+    <meta name="keywords" content="Over Time Zvenigorod, OTZ, баскетбол, награды, достижения, история, баскетбольная лига">
+    <meta name="author" content="Over Time Zvenigorod">
 
+    <!-- Open Graph метатеги для соцсетей и поисковиков -->
+    <meta property="og:title" content="Награды - Over Time Zvenigorod">
+    <meta property="og:description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Награды, достижения и история лиги.">
+    <meta property="og:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png"> <!-- Укажите полный URL логотипа -->
+    <meta property="og:url" content="https://otz2025.github.io/otz2025/Reward/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card метатеги -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Награды - Over Time Zvenigorod">
+    <meta name="twitter:description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Награды, достижения и история лиги.">
+    <meta name="twitter:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png"> <!-- Укажите полный URL логотипа -->
+
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/png" href="/otz2025/img/OTZ3.png">
+
+    <!-- Каноническая ссылка -->
+    <link rel="canonical" href="https://otz2025.github.io/otz2025/Reward/">
+
+    <!-- Подтверждение для Google Search Console -->
+    <meta name="google-site-verification" content="8HjvCESaYUgIvvERAwoEaYd3x6xdpR_ccWMwwkwgoA4" />
+
+    <!-- Подтверждение для Яндекс.Вебмастер -->
+    <meta name="yandex-verification" content="143713e69ae2928c" />
+
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2a2a2a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Фиксированное меню */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        header .logo {
+            position: absolute;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ccc;
+        }
+
+        /* Основной контент */
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+            box-sizing: border-box;
+            text-align: left;
+            margin-top: 80px; /* Отступ для фиксированного меню */
+        }
+
+        .content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Футер */
+        footer {
+            background-color: #000;
+            padding: 40px 20px;
+            margin-top: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Стиль для скрытия слова "Абоюдно" */
+        .hidden {
+            display: none;
+        }
+
+        /* Адаптация */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            header .logo {
+                position: static;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            header nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .content {
+                margin-top: 120px; /* Увеличенный отступ для мобильных устройств */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Верхний блок с кнопками навигации -->
+    <header id="header">
+        <div class="logo">OVER TIME ZWENIGOROD</div>
+        <nav>
+            <a href="/otz2025/">Главная</a>
+            <a href="/otz2025/news">Новости</a>
+            <a href="/otz2025/table">Соревнования</a>
+            <a href="/OverTimeZwenigorod/Reward">Награды</a>
+            <!--<a href="/OverTimeZwenigorod/teams">Команды</a>-->
+        </nav>
+    </header>
+
+    <!-- Основной контент страницы "Награды" -->
+    <div class="content">
+        <h2>Награды</h2>
+        <p>Здесь будет информация о наградах, достижениях и истории лиги Over Time Zvenigorod.</p>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-content">
+            <!-- Логотипы TikTok и изображение сайта -->
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@otz.summer.league?_t=ZS-8uNhlZxvA0N&_r=1" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z"/>
+                    </svg>
+                </a>
+                <a href="https://t.me/pisunapidora" target="_blank">
+                    <img src="/otz2025/img/TG.png" alt="Логотип сайта">
+                </a>
+            </div>
+
+            <p>© 2025 Over Time Zvenigorod. Все права защищены. <a href="https://t.me/voho_dranik" style="color: white; text-decoration: none;" class="hidden">Абоюдно.</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Скрипт для изменения фона шапки при скролле
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Скрипт для показа слова "Абоюдно" при клике на текст в футере
+        const footerText = document.querySelector('footer p');
+        const hiddenLink = document.querySelector('footer .hidden');
+
+        footerText.addEventListener('click', () => {
+            hiddenLink.classList.remove('hidden'); // Показываем слово
+            setTimeout(() => {
+                hiddenLink.classList.add('hidden'); // Скрываем слово через 2 секунды
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
