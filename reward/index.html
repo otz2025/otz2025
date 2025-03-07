@@ -137,8 +137,8 @@
 
         .award-card img {
             width: 100%;
-            height: 150px;
-            object-fit: cover;
+            height: 200px; /* Фиксированная высота для изображений */
+            object-fit: cover; /* Сохраняет пропорции изображения */
             border-radius: 10px;
             margin-bottom: 15px;
         }
@@ -232,6 +232,10 @@
             .award-card {
                 width: 100%; /* Одна карточка в ряд на мобильных */
             }
+
+            .award-card img {
+                height: 150px; /* Уменьшаем высоту изображения для мобильных */
+            }
         }
     </style>
 </head>
@@ -243,26 +247,26 @@
             <a href="/otz2025/">Главная</a>
             <a href="/otz2025/news">Новости</a>
             <a href="/otz2025/table">Соревнования</a>
-            <a href="/OverTimeZwenigorod/Reward">Награды</a>
+            <a href="/otz2025/reward">Награды</a>
             <!--<a href="/OverTimeZwenigorod/teams">Команды</a>-->
         </nav>
     </header>
 
     <!-- Основной контент страницы "Награды" -->
     <div class="content">
-        <h2>Награды</h2> 
+        <h2>Награды</h2> <!-- Заголовок "Новости" с прямоугольником -->
         <div class="awards">
             <!-- Пример карточки с наградой -->
             <div class="award-card">
-               <!-- <img src="/otz2025/img/NEWS2.png" alt="Награда 1">-->
+                <img src="/otz2025/img/MVP.png" alt="Награда 1"> <!-- Добавлено изображение -->
                 <h3>Лучший игрок сезона - MVP</h3>
-                <p>Награда за выдающиеся достижения в сезоне 2025 года.</p>
+                <p>Награда за выдающиеся достижения в сезоне 2024 года.</p>
             </div>
-         <!--   <div class="award-card">
-                <img src="/otz2025/img/award2.jpg" alt="Награда 2">
-                <h3>Лучшая команда</h3>
-                <p>Команда, показавшая лучшие результаты в сезоне 2024 года.</p>
-            </div>-->
+            <div class="award-card">
+                <img src="/otz2025/img/DPOY.png" alt="Награда 2"> <!-- Добавлено изображение -->
+                <h3>Лучший защитник - DPOY</h3>
+                <p>Команда, показавшая лучшие результаты в сезоне 2025 года.</p>
+            </div>
         </div>
     </div>
 
