@@ -423,23 +423,82 @@
         </div>
     </footer>
 
-    <script>
-        // Скрипт для изменения фона шапки при скролле
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
+<script>
+    // Скрипт для изменения фона шапки при скролле
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    });
 
-        // Скрипт для показа слова "Абоюдно" при клике на текст в футере
-        const footerText = document.querySelector('footer p');
-        const hiddenLink = document.querySelector('footer .hidden');
+    // Скрипт для показа слова "Абоюдно" при клике на текст в футере
+    const footerText = document.querySelector('footer p');
+    const hiddenLink = document.querySelector('footer .hidden');
 
+    if (footerText && hiddenLink) {
         footerText.addEventListener('click', () => {
             hiddenLink.classList.remove('hidden'); // Показываем слово
             setTimeout(() => {
                 hiddenLink.classList.add('hidden'); // Скрываем слово через 2 секунды
             }, 2000);
         });
-    </script>
+    }
+
+    // Скрипт для управления скроллом таблицы
+    (function() {
+        const containers = document.querySelectorAll('.table-container');
+        let isScrolling = false;
+        let startX, startY, scrollLeft, scrollTop;
+
+        containers.forEach(container => {
+            // Для тач-устройств
+            container.addEventListener('touchstart', touchStart, { passive: false });
+            container.addEventListener('touchmove', touchMove, { passive: false });
+            container.addEventListener('touchend', touchEnd, { passive: false });
+
+            // Для мыши
+            container.addEventListener('wheel', handleWheel, { passive: false });
+        });
+
+        function touchStart(e) {
+            isScrolling = true;
+            startX = e.touches[0].pageX - this.offsetLeft;
+            startY = e.touches[0].pageY - this.offsetTop;
+            scrollLeft = this.scrollLeft;
+            scrollTop = this.scrollTop;
+        }
+
+        function touchMove(e) {
+            if (!isScrolling) return;
+            
+            const x = e.touches[0].pageX - this.offsetLeft;
+            const y = e.touches[0].pageY - this.offsetTop;
+            const walkX = (x - startX) * 2;
+            const walkY = (y - startY) * 2;
+
+            // Проверяем, есть ли горизонтальный скролл
+            if (this.scrollWidth > this.clientWidth) {
+                e.preventDefault();
+                this.scrollLeft = scrollLeft - walkX;
+            }
+
+            // Блокируем вертикальный скролл
+            if (Math.abs(walkX) > Math.abs(walkY)) {
+                e.preventDefault();
+            }
+        }
+
+        function touchEnd() {
+            isScrolling = false;
+        }
+
+        function handleWheel(e) {
+            // Проверяем, есть ли горизонтальный скролл
+            if (this.scrollWidth > this.clientWidth) {
+                e.preventDefault();
+                this.scrollLeft += e.deltaX + e.deltaY;
+            }
+        }
+    })();
+</script>
 </body>
 </html>
