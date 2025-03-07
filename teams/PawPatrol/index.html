@@ -109,19 +109,19 @@
         }
 
         .team-info img {
-            width: 120px; /* Увеличенный размер логотипа */
-            height: 120px;
+            width: 80px; /* Размер логотипа по умолчанию */
+            height: 80px;
             border-radius: 10px;
             border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .team-info .team-name {
-            font-size: 32px; /* Увеличенный размер текста названия команды */
+            font-size: 24px; /* Размер текста названия команды по умолчанию */
             font-weight: bold;
         }
 
         .team-info .team-description {
-            font-size: 16px; /* Размер текста описания оставлен прежним */
+            font-size: 16px;
             color: #ccc;
         }
 
@@ -181,7 +181,7 @@
             display: none;
         }
 
-        /* Адаптация */
+        /* Адаптация для мобильных устройств */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -212,12 +212,32 @@
             }
 
             .team-info img {
-                width: 150px; /* Увеличенный размер логотипа для мобильных */
-                height: 150px;
+                width: 120px; /* Увеличенный размер логотипа для мобильных */
+                height: 120px;
+            }
+
+            .team-info .team-name {
+                font-size: 32px; /* Увеличенный размер текста названия команды для мобильных */
             }
 
             .team-info .team-name::after {
                 margin: 10px auto; /* Центрируем линию на мобильных */
+            }
+        }
+
+        /* Стили для десктопов */
+        @media (min-width: 769px) {
+            .team-info img {
+                width: 120px; /* Увеличенный размер логотипа для десктопов */
+                height: 120px;
+            }
+
+            .team-info .team-name {
+                font-size: 32px; /* Увеличенный размер текста названия команды для десктопов */
+            }
+
+            .team-info {
+                flex-direction: row; /* Логотип и текст по горизонтали для десктопов */
             }
         }
     </style>
