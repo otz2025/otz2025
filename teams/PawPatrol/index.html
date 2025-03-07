@@ -45,6 +45,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden; /* Отключаем горизонтальный скролл для всей страницы */
         }
 
         /* Фиксированное меню */
@@ -280,25 +281,31 @@
             }
 
             .team-info {
-                flex-direction: column; /* Логотип и текст в столбик на мобильных */
-                text-align: center;
+                flex-direction: row; /* Логотип и текст по горизонтали на мобильных */
+                align-items: center; /* Выравнивание по центру по вертикали */
+                justify-content: flex-start; /* Прижимаем к левому краю */
+                gap: 15px; /* Увеличиваем отступ между логотипом и текстом */
             }
 
             .team-info img {
-                width: 140px; /* Увеличенный размер логотипа для мобильных */
-                height: 140px;
+                width: 80px; /* Увеличиваем размер логотипа для мобильных */
+                height: 80px;
             }
 
             .team-info .team-name {
-                font-size: 34px; /* Увеличенный размер текста названия команды для мобильных */
+                font-size: 28px; /* Увеличиваем размер текста названия команды для мобильных */
+            }
+
+            .team-info .team-description {
+                font-size: 18px; /* Увеличиваем размер текста описания для мобильных */
             }
 
             .team-info .team-name::after {
-                margin: 10px auto; /* Центрируем линию на мобильных */
+                margin: 10px 0; /* Увеличиваем отступ линии */
             }
 
             .table-header h3 {
-                font-size: 20px; /* Уменьшаем размер шрифта для мобильных */
+                font-size: 24px; /* Увеличиваем размер шрифта для мобильных */
             }
 
             th, td {
