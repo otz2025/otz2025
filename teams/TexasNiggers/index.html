@@ -1,39 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Основные метатеги -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Команды - Over Time Zvenigorod</title>
-    <meta name="description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Команды, игроки и история лиги.">
-    <meta name="keywords" content="Over Time Zvenigorod, OTZ, баскетбол, команды, игроки, история, баскетбольная лига">
-    <meta name="author" content="Over Time Zvenigorod">
-
-    <!-- Open Graph метатеги для соцсетей и поисковиков -->
-    <meta property="og:title" content="Команды - Over Time Zvenigorod">
-    <meta property="og:description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Команды, игроки и история лиги.">
-    <meta property="og:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png">
-    <meta property="og:url" content="https://otz2025.github.io/otz2025/teams/">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card метатеги -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Команды - Over Time Zvenigorod">
-    <meta name="twitter:description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Команды, игроки и история лиги.">
-    <meta name="twitter:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png">
-
-    <!-- Фавиконка -->
-    <link rel="icon" type="image/png" href="/otz2025/img/OTZ3.png">
-
-    <!-- Каноническая ссылка -->
-    <link rel="canonical" href="https://otz2025.github.io/otz2025/teams/">
-
-    <!-- Подтверждение для Google Search Console -->
-    <meta name="google-site-verification" content="8HjvCESaYUgIvvERAwoEaYd3x6xdpR_ccWMwwkwgoA4" />
-
-    <!-- Подтверждение для Яндекс.Вебмастер -->
-    <meta name="yandex-verification" content="143713e69ae2928c" />
-
+    <title>Турнирная таблица - Over Time Zvenigorod</title>
     <style>
         /* Общие стили */
         body {
@@ -45,6 +15,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden; /* Отключаем горизонтальный скролл для всей страницы */
         }
 
         /* Фиксированное меню */
@@ -96,8 +67,9 @@
             margin: 0 auto;
             flex: 1;
             box-sizing: border-box;
-            text-align: left;
-            margin-top: 80px; /* Отступ для фиксированного меню */
+            text-align: center;
+            margin-top: 80px; /* Отступ сверху для шапки */
+            width: 100%; /* Ограничиваем ширину контента */
         }
 
         /* Блок с информацией о команде */
@@ -109,19 +81,19 @@
         }
 
         .team-info img {
-            width: 80px; /* Размер логотипа по умолчанию */
-            height: 80px;
+            width: 120px; /* Увеличенный размер логотипа */
+            height: 120px;
             border-radius: 10px;
             border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .team-info .team-name {
-            font-size: 24px; /* Размер текста названия команды по умолчанию */
+            font-size: 36px; /* Увеличенный размер текста названия команды */
             font-weight: bold;
         }
 
         .team-info .team-description {
-            font-size: 16px;
+            font-size: 18px; /* Увеличенный размер текста описания */
             color: #ccc;
         }
 
@@ -135,7 +107,7 @@
             margin: 10px 0;
         }
 
-        /* Заголовок таблицы */
+        /* Заголовок и линия над таблицей */
         .table-header {
             text-align: left;
             margin-bottom: 20px;
@@ -157,10 +129,10 @@
         /* Контейнер для таблицы с горизонтальным скроллом */
         .table-container {
             overflow-x: auto; /* Горизонтальная прокрутка для таблицы */
+            margin-top: 20px;
+            margin-bottom: 40px; /* Добавлен отступ снизу */
             width: 100%;
-            max-width: 100%; /* Не выходит за пределы экрана */
             -webkit-overflow-scrolling: touch; /* Плавный скролл на мобильных устройствах */
-            margin-bottom: 20px; /* Отступ снизу */
         }
 
         /* Таблица */
@@ -249,11 +221,6 @@
             height: 24px;
         }
 
-        /* Стиль для скрытия слова "Абоюдно" */
-        .hidden {
-            display: none;
-        }
-
         /* Адаптация для мобильных устройств */
         @media (max-width: 768px) {
             header {
@@ -287,12 +254,12 @@
             }
 
             .team-info img {
-                width: 80px; /* Уменьшаем размер логотипа для мобильных */
-                height: 80px;
+                width: 150px; /* Уменьшаем размер логотипа для мобильных */
+                height: 150px;
             }
 
             .team-info .team-name {
-                font-size: 24px; /* Уменьшаем размер текста названия команды */
+                font-size: 30px; /* Уменьшаем размер текста названия команды */
             }
 
             .team-info .team-name::after {
@@ -300,11 +267,11 @@
             }
 
             .team-info .team-description {
-                font-size: 14px; /* Уменьшаем размер текста описания */
+                font-size: 16px; /* Уменьшаем размер текста описания */
             }
 
             .table-header h3 {
-                font-size: 20px; /* Уменьшаем размер шрифта для мобильных */
+                font-size: 30px; /* Уменьшаем размер шрифта для мобильных */
             }
 
             th, td {
@@ -315,22 +282,6 @@
             .team-logo {
                 width: 24px; /* Уменьшаем размер логотипа для мобильных */
                 height: 24px;
-            }
-        }
-
-        /* Стили для десктопов */
-        @media (min-width: 769px) {
-            .team-info img {
-                width: 170px; /* Увеличенный размер логотипа для десктопов */
-                height: 170px;
-            }
-
-            .team-info .team-name {
-                font-size: 42px; /* Увеличенный размер текста названия команды для десктопов */
-            }
-
-            .team-info {
-                flex-direction: row; /* Логотип и текст по горизонтали для десктопов */
             }
         }
     </style>
@@ -347,20 +298,20 @@
         </nav>
     </header>
 
-    <!-- Основной контент страницы "Команды" -->
+    <!-- Основной контент страницы -->
     <div class="content">
         <!-- Блок с информацией о команде -->
         <div class="team-info">
-            <img src="/otz2025/img/PPATROL2.png" alt="Логотип Paw Patrol">
+            <img src="/otz2025/img/TEXAS NIGGAS2.png" alt="team">
             <div>
-                <div class="team-name">Paw Patrol</div>
+                <div class="team-name">Texas Niggers</div>
                 <div class="team-description">Сезон 2025.</div>
             </div>
         </div>
 
         <!-- Заголовок и линия над таблицей -->
         <div class="table-header">
-            <h3>Турнирная таблица</h3>
+            <h3>Рейтинг</h3>
             <hr>
         </div>
 
@@ -384,10 +335,10 @@
                 <tbody>
                     <!-- Строки таблицы -->
                     <tr>
-                        <td>5</td>
+                        <td>1</td>
                         <td class="team-cell">
-                            <img src="/otz2025/img/PPATROL2.png" alt="PPATROL" class="team-logo">
-                            PAW PATROL
+                            <img src="/otz2025/img/TEXAS NIGGAS2.png" alt="PPATROL" class="team-logo">
+                            Texas Niggers
                         </td>
                         <td>0</td>
                         <td>0</td>
@@ -401,6 +352,15 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Заголовок "Состав" -->
+        <div class="table-header">
+            <h3>Состав</h3>
+            <hr>
+        </div>
+
+        <!-- Пустое место для состава -->
+        <div style="height: 200px;"></div>
     </div>
 
     <!-- Подвал -->
@@ -427,17 +387,6 @@
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // Скрипт для показа слова "Абоюдно" при клике на текст в футере
-        const footerText = document.querySelector('footer p');
-        const hiddenLink = document.querySelector('footer .hidden');
-
-        footerText.addEventListener('click', () => {
-            hiddenLink.classList.remove('hidden'); // Показываем слово
-            setTimeout(() => {
-                hiddenLink.classList.add('hidden'); // Скрываем слово через 2 секунды
-            }, 2000);
         });
     </script>
 </body>
