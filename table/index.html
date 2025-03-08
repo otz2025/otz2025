@@ -12,16 +12,15 @@
     <!-- Open Graph метатеги для соцсетей и поисковиков -->
     <meta property="og:title" content="Соревнования - Over Time Zvenigorod">
     <meta property="og:description" content="Актуальное расписание матчей и турнирная таблица баскетбольной лиги Over Time Zvenigorod. Следите за результатами и новостями!">
-    <meta property="og:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png"> <!-- Укажите полный URL логотипа -->
-    <meta property="og:url" content="https://otz2025.github.io/otz2025/table"> <!-- Укажите URL страницы соревнований -->
+    <meta property="og:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png">
+    <meta property="og:url" content="https://otz2025.github.io/otz2025/table">
     <meta property="og:type" content="website">
-    <!-- Open Graph метатеги для соцсетей и поисковиков -->
 
     <!-- Twitter Card метатеги -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Over Time Zvenigorod - Баскетбольная лига">
     <meta name="twitter:description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Расписание матчей, турнирная таблица, новости и результаты.">
-    <meta name="twitter:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png"> <!-- Укажите полный URL логотипа -->
+    <meta name="twitter:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png">
 
     <!-- Фавиконка -->
     <link rel="icon" type="image/png" href="/otz2025/img/OTZ3.png">
@@ -35,9 +34,6 @@
     <!-- Подтверждение для Яндекс.Вебмастер -->
     <meta name="yandex-verification" content="143713e69ae2928c" />
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Соревнования - Over Time Zvenigorod</title>
     <style>
         /* Общие стили */
         body {
@@ -49,7 +45,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            overflow-x: hidden; /* Отключаем горизонтальный скролл для всей страницы */
+            overflow-x: hidden;
         }
 
         /* Фиксированное меню */
@@ -101,22 +97,21 @@
             margin: 0 auto;
             flex: 1;
             box-sizing: border-box;
-            text-align: center; /* Выравнивание текста по центру */
-            margin-top: 100px; /* Отступ сверху для видимости заголовка */
-            width: 100%; /* Ограничиваем ширину контента */
+            text-align: center;
+            margin-top: 100px;
+            width: 100%;
         }
 
         .content h2 {
-            font-size: 36px; /* Увеличенный размер шрифта */
+            font-size: 36px;
             margin-bottom: 20px;
             padding-top: 20px;
             border-top: 1px solid black;
-            position: relative; /* Для позиционирования псевдоэлемента */
-            display: inline-block; /* Чтобы прямоугольник был по ширине текста */
-            padding: 15px 30px; /* Увеличенные отступы для текста */
+            position: relative;
+            display: inline-block;
+            padding: 15px 30px;
         }
 
-        /* Прямоугольник за заголовком */
         .content h2::before {
             content: '';
             position: absolute;
@@ -124,18 +119,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #dd4710; /* Цвет прямоугольника */
-            z-index: -1; /* Прямоугольник позади текста */
-            border-radius: 5px; /* Закругленные углы */
+            background-color: #dd4710;
+            z-index: -1;
+            border-radius: 5px;
         }
 
         /* Таблица */
         .table-container {
-            overflow-x: auto; /* Горизонтальная прокрутка для таблицы */
+            overflow-x: auto;
             margin-top: 20px;
-            margin-bottom: 40px; /* Добавлен отступ снизу */
+            margin-bottom: 40px;
             width: 100%;
-            -webkit-overflow-scrolling: touch; /* Плавный скролл на мобильных устройствах */
+            -webkit-overflow-scrolling: touch;
         }
 
         table {
@@ -144,18 +139,18 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            min-width: 600px; /* Минимальная ширина таблицы */
+            min-width: 600px;
         }
 
         th, td {
-            padding: 16px; /* Увеличенные отступы для высоты строк */
+            padding: 16px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            border-right: 1px solid rgba(255, 255, 255, 0.2); /* Вертикальные линии */
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         th:last-child, td:last-child {
-            border-right: none; /* Убираем правую границу у последнего столбца */
+            border-right: none;
         }
 
         th {
@@ -169,20 +164,20 @@
 
         /* Логотипы команд */
         .team-logo {
-            width: 30px; /* Размер логотипа */
+            width: 30px;
             height: 30px;
             vertical-align: middle;
-            margin-right: 10px; /* Отступ между логотипом и текстом */
+            margin-right: 10px;
         }
 
         /* Выравнивание логотипа и текста по горизонтали */
         .team-cell {
             display: flex;
-            align-items: center; /* Выравнивание по центру по вертикали */
-            justify-content: center; /* Выравнивание по центру по горизонтали */
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Блок с матчами - исправления */
+        /* Блок с матчами */
         .match-results {
             display: flex;
             flex-direction: column;
@@ -201,18 +196,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 10px; /* Добавляем промежуток между элементами */
+            gap: 10px;
         }
 
         .match-results .team-logo {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 120px; /* Фиксированная ширина для логотипов */
+            width: 120px;
         }
 
         .match-results .team-name {
-            margin-top: 8px; /* Отступ между логотипом и названием */
+            margin-top: 8px;
             font-size: 16px;
             text-align: center;
         }
@@ -226,8 +221,8 @@
             font-size: 24px;
             font-weight: bold;
             margin: 0 20px;
-            min-width: 80px; /* Минимальная ширина для счета */
-            text-align: center; /* Выравнивание текста по центру */
+            min-width: 80px;
+            text-align: center;
         }
 
         .date {
@@ -253,13 +248,13 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            text-align: center; /* Выравнивание текста по центру */
+            text-align: center;
         }
 
         .social-links {
             display: flex;
             gap: 20px;
-            align-items: center; /* Выравнивание иконок по центру */
+            align-items: center;
         }
 
         .social-links a {
@@ -269,8 +264,8 @@
         }
 
         .social-links a:hover {
-            transform: scale(1.1); /* Увеличение при наведении */
-            opacity: 0.8; /* Легкое затемнение */
+            transform: scale(1.1);
+            opacity: 0.8;
         }
 
         .social-links img {
@@ -293,64 +288,64 @@
             header .logo {
                 position: static;
                 margin-bottom: 10px;
-                text-align: center; /* Центрируем логотип */
+                text-align: center;
             }
 
             header nav {
                 display: flex;
-                flex-direction: row; /* Горизонтальное расположение кнопок */
-                justify-content: center; /* Центрируем кнопки по горизонтали */
-                gap: 10px; /* Уменьшаем отступ между кнопками */
-                flex-wrap: wrap; /* Если кнопок много, они переносятся на новую строку */
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
             }
 
             .content {
-                margin-top: 80px; /* Уменьшаем отступ для мобильных устройств */
+                margin-top: 80px;
             }
 
             .content h2 {
-                font-size: 28px; /* Уменьшаем размер шрифта для мобильных */
-                padding: 10px 20px; /* Уменьшаем отступы */
+                font-size: 28px;
+                padding: 10px 20px;
             }
 
             th, td {
-                padding: 12px; /* Уменьшаем отступы в таблице для мобильных */
-                font-size: 14px; /* Уменьшаем размер шрифта для мобильных */
+                padding: 12px;
+                font-size: 14px;
             }
 
             .team-logo {
-                width: 24px; /* Уменьшаем размер логотипа для мобильных */
+                width: 24px;
                 height: 24px;
             }
 
             .table-container {
-                overflow-x: auto; /* Горизонтальная прокрутка только для таблицы */
+                overflow-x: auto;
                 width: 100%;
             }
 
             table {
-                min-width: 600px; /* Минимальная ширина таблицы */
+                min-width: 600px;
             }
 
             .match-results {
-                margin-top: 20px; /* Уменьшаем отступ для мобильных устройств */
+                margin-top: 20px;
             }
 
             .match-result {
-                padding: 15px; /* Уменьшаем отступы внутри блока */
+                padding: 15px;
             }
 
             .team-logo img {
-                width: 40px; /* Уменьшаем размер логотипов для мобильных */
+                width: 40px;
                 height: 40px;
             }
 
             .score {
-                font-size: 20px; /* Уменьшаем размер шрифта для мобильных */
+                font-size: 20px;
             }
 
             .date {
-                font-size: 16px; /* Уменьшаем размер шрифта для мобильных */
+                font-size: 16px;
             }
         }
 
@@ -363,7 +358,7 @@
         .table-header h3 {
             font-size: 24px;
             margin-bottom: 10px;
-            display: inline-block; /* Чтобы линия была по ширине текста */
+            display: inline-block;
         }
 
         .table-header hr {
@@ -375,7 +370,7 @@
 
         .schedule-link {
             margin-top: 20px;
-            margin-bottom: 20px; /* Добавляем отступ снизу */
+            margin-bottom: 20px;
             text-align: center;
         }
 
@@ -389,6 +384,24 @@
         .schedule-link a:hover {
             color: #ff6b3b;
         }
+
+        /* Стили для ссылок команд */
+        .team-cell a, .team-name a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .team-cell a:hover, .team-name a:hover {
+            color: #dd4710;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .team-cell a, .team-name a {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -399,7 +412,6 @@
             <a href="/otz2025/news">Новости</a>
             <a href="/otz2025/table">Соревнования</a>
             <a href="/otz2025/reward">Награды</a>
-            <!--<a href="/OverTimeZwenigorod/teams">Команды</a>-->
         </nav>
     </header>
 
@@ -417,12 +429,16 @@
                 <div class="teams">
                     <div class="team-logo">
                         <img src="/otz2025/img/PPATROL2.png" alt="Paw patrol">
-                        <div class="team-name">Paw Patrol</div>
+                        <div class="team-name">
+                            <a href="/otz2025/teams/PawPatrol">Paw Patrol</a>
+                        </div>
                     </div>
                     <div class="score">Не начался</div>
                     <div class="team-logo">
                         <img src="/otz2025/img/RWE2.png" alt="RWE">
-                        <div class="team-name">RWE</div>
+                        <div class="team-name">
+                            <a href="/otz2025/teams/RWE">RWE</a>
+                        </div>
                     </div>
                 </div>
                 <div class="date">10 июня 16:00</div>
@@ -433,12 +449,16 @@
                 <div class="teams">
                     <div class="team-logo">
                         <img src="/otz2025/img/BULLDOGS2.png" alt="BULLDOGS">
-                        <div class="team-name">Bulldogs</div>
+                        <div class="team-name">
+                            <a href="/otz2025/teams/Bulldogs">Bulldogs</a>
+                        </div>
                     </div>
                     <div class="score">Не начался</div>
                     <div class="team-logo">
                         <img src="/otz2025/img/KITTY BOYS.png" alt="KITTY BOYS">
-                        <div class="team-name">Kitty Boys</div>
+                        <div class="team-name">
+                            <a href="/otz2025/teams/KittyBoys">Kitty Boys</a>
+                        </div>
                     </div>
                 </div>
                 <div class="date">10 июня 18:00</div>
@@ -479,7 +499,7 @@
                         <td>1</td>
                         <td class="team-cell">
                             <img src="/otz2025/img/BULLDOGS2.png" alt="BULLDOGS2" class="team-logo">
-                            BULLDOGS
+                            <a href="/otz2025/teams/Bulldogs">BULLDOGS</a>
                         </td>
                         <td>0</td>
                         <td>0</td>
@@ -494,7 +514,7 @@
                         <td>2</td>
                         <td class="team-cell">
                             <img src="/otz2025/img/TEXAS NIGGAS2.png" alt="Texas Niggers" class="team-logo">
-                            TEXAS NIGGERS
+                            <a href="/otz2025/teams/TexasNiggers">TEXAS NIGGERS</a>
                         </td>
                         <td>0</td>
                         <td>0</td>
@@ -509,7 +529,7 @@
                         <td>3</td>
                         <td class="team-cell">
                             <img src="/otz2025/img/RWE2.png" alt="RWE" class="team-logo">
-                            RWE
+                            <a href="/otz2025/teams/RWE">RWE</a>
                         </td>
                         <td>0</td>
                         <td>0</td>
@@ -524,7 +544,7 @@
                         <td>4</td>
                         <td class="team-cell">
                             <img src="/otz2025/img/KITTY BOYS.png" alt="Kitty Boys" class="team-logo">
-                            KITTY BOYS
+                            <a href="/otz2025/teams/KittyBoys">KITTY BOYS</a>
                         </td>
                         <td>0</td>
                         <td>0</td>
@@ -539,7 +559,7 @@
                         <td>5</td>
                         <td class="team-cell">
                             <img src="/otz2025/img/PPATROL2.png" alt="PPATROL" class="team-logo">
-                            PAW PATROL
+                            <a href="/otz2025/teams/PawPatrol">PAW PATROL</a>
                         </td>
                         <td>0</td>
                         <td>0</td>
