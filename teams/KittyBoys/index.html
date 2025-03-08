@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kitty Boys - Over Time Zvenigorod</title>
+    <title>RWE - Over Time Zvenigorod</title>
     <style>
         /* Общие стили */
         body {
@@ -180,6 +180,45 @@
             justify-content: center; /* Выравнивание по центру по горизонтали */
         }
 
+        /* Блок с составом команды */
+        .team-squad {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .player-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .player-card img {
+            width: 80px; /* Размер фотографии игрока */
+            height: 80px;
+            border-radius: 50%; /* Круглая фотография */
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .player-info {
+            text-align: left;
+        }
+
+        .player-info .player-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .player-info .player-stats {
+            font-size: 16px;
+            color: #ccc;
+        }
+
         /* Футер */
         footer {
             background-color: #000;
@@ -283,6 +322,20 @@
                 width: 24px; /* Уменьшаем размер логотипа для мобильных */
                 height: 24px;
             }
+
+            .player-card {
+                flex-direction: column; /* Вертикальное расположение на мобильных */
+                text-align: center;
+            }
+
+            .player-card img {
+                width: 100px; /* Увеличиваем размер фотографии на мобильных */
+                height: 100px;
+            }
+
+            .player-info {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -337,7 +390,7 @@
                     <tr>
                         <td>1</td>
                         <td class="team-cell">
-                            <img src="/otz2025/img/KITTY BOYS.png" alt="PPATROL" class="team-logo">
+                            <img src="/otz2025/img/KITTY BOYS.png" alt="Kitty Boys" class="team-logo">
                             Kitty Boys
                         </td>
                         <td>0</td>
@@ -359,8 +412,54 @@
             <hr>
         </div>
 
-        <!-- Пустое место для состава -->
-        <div style="height: 200px;"></div>
+        <!-- Блок с составом команды -->
+        <div class="team-squad">
+            <!-- Игрок 1 -->
+            <div class="player-card">
+                <img src="/otz2025/img/KITTY BOYS.png" alt="Игрок 1">
+                <div class="player-info">
+                    <div class="player-name">Макаров Андрей</div>
+                    <div class="player-stats">Рост: 165 см</div>
+                </div>
+            </div>
+
+            <!-- Игрок 2 -->
+            <div class="player-card">
+                <img src="/otz2025/img/KITTY BOYS.png" alt="Игрок 2">
+                <div class="player-info">
+                    <div class="player-name">Ржевский Михаил</div>
+                    <div class="player-stats">Рост: 168 см</div>
+                </div>
+            </div>
+
+            <!-- Игрок 3 -->
+            <div class="player-card">
+                <img src="/otz2025/img/KITTY BOYS.png" alt="Игрок 3">
+                <div class="player-info">
+                    <div class="player-name">Демьянов Кирилл</div>
+                    <div class="player-stats">Рост: 160 см</div>
+                </div>
+            </div>
+            
+            <!-- Игрок 4 -->
+            <div class="player-card">
+                <img src="/otz2025/img/KITTY BOYS.png" alt="Игрок 2">
+                <div class="player-info">
+                    <div class="player-name">Ежов Глеб</div>
+                    <div class="player-stats">Рост: 167 см</div>
+                </div>
+            </div>
+            
+            <!-- Игрок 5 -->
+            <div class="player-card">
+                <img src="/otz2025/img/KITTY BOYS.png" alt="Игрок 2">
+                <div class="player-info">
+                    <div class="player-name">Лагуткин Артем</div>
+                    <div class="player-stats">Рост: 169 см</div>
+                </div>
+            </div>
+            
+        </div>
     </div>
 
     <!-- Подвал -->
@@ -391,4 +490,3 @@
     </script>
 </body>
 </html>
-
