@@ -180,6 +180,45 @@
             justify-content: center; /* Выравнивание по центру по горизонтали */
         }
 
+        /* Блок с составом команды */
+        .team-squad {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .player-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .player-card img {
+            width: 80px; /* Размер фотографии игрока */
+            height: 80px;
+            border-radius: 50%; /* Круглая фотография */
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .player-info {
+            text-align: left;
+        }
+
+        .player-info .player-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .player-info .player-stats {
+            font-size: 16px;
+            color: #ccc;
+        }
+
         /* Футер */
         footer {
             background-color: #000;
@@ -283,6 +322,20 @@
                 width: 24px; /* Уменьшаем размер логотипа для мобильных */
                 height: 24px;
             }
+
+            .player-card {
+                flex-direction: column; /* Вертикальное расположение на мобильных */
+                text-align: center;
+            }
+
+            .player-card img {
+                width: 100px; /* Увеличиваем размер фотографии на мобильных */
+                height: 100px;
+            }
+
+            .player-info {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -359,8 +412,54 @@
             <hr>
         </div>
 
-        <!-- Пустое место для состава -->
-        <div style="height: 200px;"></div>
+        <!-- Блок с составом команды -->
+        <div class="team-squad">
+            <!-- Игрок 1 -->
+            <div class="player-card">
+                <img src="/otz2025/img/player1.jpg" alt="Игрок 1">
+                <div class="player-info">
+                    <div class="player-name">Гуленин Глеб</div>
+                    <div class="player-stats">Рост: 157 см</div>
+                </div>
+            </div>
+
+            <!-- Игрок 2 -->
+            <div class="player-card">
+                <img src="/otz2025/img/player2.jpg" alt="Игрок 2">
+                <div class="player-info">
+                    <div class="player-name">Кондратьев Ярослав</div>
+                    <div class="player-stats">Рост: 155 см</div>
+                </div>
+            </div>
+
+            <!-- Игрок 3 -->
+            <div class="player-card">
+                <img src="/otz2025/img/player3.jpg" alt="Игрок 3">
+                <div class="player-info">
+                    <div class="player-name">Ивлев Мирослав</div>
+                    <div class="player-stats">Рост: 182 см</div>
+                </div>
+            </div>
+            
+            <!-- Игрок 4 -->
+            <div class="player-card">
+                <img src="/otz2025/img/player2.jpg" alt="Игрок 2">
+                <div class="player-info">
+                    <div class="player-name">Нагайцев Андрей</div>
+                    <div class="player-stats">Рост: 155 см</div>
+                </div>
+            </div>
+            
+            <!-- Игрок 5 -->
+            <div class="player-card">
+                <img src="/otz2025/img/player2.jpg" alt="Игрок 2">
+                <div class="player-info">
+                    <div class="player-name">Шипко Владимир</div>
+                    <div class="player-stats">Рост: 175 см</div>
+                </div>
+            </div>
+            
+        </div>
     </div>
 
     <!-- Подвал -->
