@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Основные метатеги и стили -->
+    <!-- Основные метатеги -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Over Time Zvenigorod - Баскетбольная лига</title>
+    <meta name="description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Расписание матчей, турнирная таблица, новости и результаты.">
+    <meta name="keywords" content="Over Time Zvenigorod, OTZ, баскетбол, расписание матчей, турнирная таблица, новости, результаты, баскетбольная лига">
+    <meta name="author" content="Over Time Zvenigorod">
+
+    <!-- Open Graph метатеги для соцсетей и поисковиков -->
+    <meta property="og:title" content="Over Time Zvenigorod - Баскетбольная лига">
+    <meta property="og:description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Расписание матчей, турнирная таблица, новости и результаты.">
+    <meta property="og:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png"> <!-- Укажите полный URL логотипа -->
+    <meta property="og:url" content="https://otz2025.github.io/otz2025/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card метатеги -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Over Time Zvenigorod - Баскетбольная лига">
+    <meta name="twitter:description" content="Официальный сайт баскетбольной лиги Over Time Zvenigorod. Расписание матчей, турнирная таблица, новости и результаты.">
+    <meta name="twitter:image" content="https://otz2025.github.io/otz2025/img/OTZ3.png"> <!-- Укажите полный URL логотипа -->
+
+    <!-- Фавиконка -->
+    <link rel="icon" type="image/png" href="/otz2025/img/OTZ3.png">
+
+    <!-- Каноническая ссылка -->
+    <link rel="canonical" href="https://otz2025.github.io/otz2025/">
+
+    <!-- Подтверждение для Google Search Console -->
+    <meta name="google-site-verification" content="8HjvCESaYUgIvvERAwoEaYd3x6xdpR_ccWMwwkwgoA4" />
+
+    <!-- Подтверждение для Яндекс.Вебмастер -->
+    <meta name="yandex-verification" content="143713e69ae2928c" />
+
     <style>
         /* Общие стили */
         body {
@@ -60,6 +89,40 @@
             color: #ccc;
         }
 
+        /* Hero-секция */
+        .hero {
+            height: 540px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('img/OTZ.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        /* Заголовок перед картинкой (только для десктопов) */
+        .hero h1 {
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        /* Показываем заголовок только на десктопах */
+        @media (min-width: 769px) {
+            .hero h1 {
+                display: block;
+            }
+        }
+
         /* Основной контент */
         .content {
             padding: 20px;
@@ -68,6 +131,14 @@
             flex: 1;
             box-sizing: border-box;
             text-align: left;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         /* Блок с матчами */
@@ -97,27 +168,16 @@
             flex-direction: column;
             align-items: center;
         }
-
-        .team-logo img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .team-name {
-            margin-top: 8px; /* Отступ между логотипом и названием */
-            font-size: 18px;
-            text-align: center;
-        }
-
-        /* Стили для ссылок внутри названия команды */
-        .team-name a {
+                /* Стили для ссылок внутри названия команды */
+        .team-name a 
+        {
             color: white; /* Белый цвет текста */
             text-decoration: none; /* Убираем подчеркивание */
         }
 
-        .team-name a:hover {
-            color: white; /* Белый цвет при наведении */
-            text-decoration: underline; /* Подчеркивание при наведении */
+        .team-logo img {
+            width: 50px;
+            height: 50px;
         }
 
         .score {
@@ -135,7 +195,114 @@
             text-align: center;
         }
 
-        /* Адаптация для мобильных устройств */
+        /* Новости */
+        .news {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 60px; /* Увеличенный отступ сверху */
+            justify-content: center;
+        }
+
+        .news-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: calc(50% - 20px);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .news-item img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            border: 2px solid white;
+            object-fit: cover;
+            margin-top: -40px;
+            margin-bottom: 20px;
+        }
+
+        /* Стиль для ссылки "Читать далее" */
+        .read-more {
+            color: #dd4710;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .read-more:hover {
+            color: #ff6b3b;
+        }
+
+        /* Стиль для ссылки "Посмотреть полное расписание" */
+        .schedule-link {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .schedule-link a {
+            color: #dd4710; /* Оранжевый цвет */
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .schedule-link a:hover {
+            color: #ff6b3b; /* Более светлый оранжевый при наведении */
+        }
+
+        /* Футер */
+        footer {
+            background-color: #000;
+            padding: 40px 20px;
+            margin-top: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Стиль для скрытия слова "Абоюдно" */
+        .hidden {
+            display: none;
+        }
+
+        /* Адаптация */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -155,11 +322,24 @@
                 gap: 10px;
                 flex-wrap: wrap;
             }
+
+            .hero {
+                height: 300px;
+                background-size: contain;
+            }
+
+            .news-item {
+                width: 100%;
+            }
+
+            .social-links {
+                flex-direction: row;
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Верхний блок с кнопками навигации -->
     <header id="header">
         <div class="logo">OVER TIME ZWENIGOROD</div>
         <nav>
@@ -167,8 +347,13 @@
             <a href="/otz2025/news">Новости</a>
             <a href="/otz2025/table">Соревнования</a>
             <a href="/otz2025/reward">Награды</a>
+            <!--<a href="/OverTimeZwenigorod/teams">Команды</a>-->
         </nav>
     </header>
+
+    <div class="hero">
+        <h1>OVER TIME ZWENIGOROD</h1>
+    </div>
 
     <!-- Основной контент страницы -->
     <div class="content">
@@ -181,14 +366,14 @@
                     <div class="team-logo">
                         <img src="img/PPATROL2.png" alt="Paw patrol">
                         <div class="team-name">
-                            <a href="/otz2025/teams/PawPatrol">Paw Patrol</a>
+                            <a href="/otz2025/teams/paw-patrol">Paw Patrol</a>
                         </div>
                     </div>
                     <div class="score">Не начался</div>
                     <div class="team-logo">
                         <img src="img/RWE2.png" alt="RWE">
                         <div class="team-name">
-                            <a href="/otz2025/teams/RWE">RWE</a>
+                            <a href="/otz2025/teams/rwe">RWE</a>
                         </div>
                     </div>
                 </div>
@@ -201,14 +386,14 @@
                     <div class="team-logo">
                         <img src="img/BULLDOGS2.png" alt="BULLDOGS">
                         <div class="team-name">
-                            <a href="/otz2025/teams/Bulldogs">Bulldogs</a>
+                            <a href="/otz2025/teams/bulldogs">Bulldogs</a>
                         </div>
                     </div>
                     <div class="score">Не начался</div>
                     <div class="team-logo">
                         <img src="img/KITTY BOYS.png" alt="KITTY BOYS">
                         <div class="team-name">
-                            <a href="/otz2025/teams/KittyBoys">Kitty Boys</a>
+                            <a href="/otz2025/teams/kitty-boys">Kitty Boys</a>
                         </div>
                     </div>
                 </div>
@@ -220,9 +405,21 @@
         <div class="schedule-link">
             <a href="/otz2025/schedule">Посмотреть полное расписание</a>
         </div>
+
+        <!-- Заголовок "Новости" -->
+        <h2>Новости</h2>
+        <div class="news">
+            <div class="news-item">
+                <img src="img/NEWS2.png" alt="Новость 1">
+                <div class="text">
+                    <h3>Громкие трейды в OVER TIME ZWENIGOROD: RWE, KITTY BOYS и TEXAS NIGGERS обменялись игроками!</h3>
+                    <p>В OVER TIME ZWENIGOROD состоялся громкий обмен.</p>
+                    <a href="/otz2025/news" class="read-more">Читать далее</a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Подвал -->
     <footer>
         <div class="footer-content">
             <!-- Логотипы TikTok и изображение сайта -->
@@ -237,7 +434,7 @@
                 </a>
             </div>
 
-            <p>© 2025 Over Time Zvenigorod. Все права защищены.</p>
+            <p>© 2025 Over Time Zvenigorod. Все права защищены. <a href="https://t.me/voho_dranik" style="color: white; text-decoration: none;" class="hidden">Абоюдно.</a></p>
         </div>
     </footer>
 
@@ -247,6 +444,18 @@
             const header = document.getElementById('header');
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        // Скрипт для показа слова "Абоюдно" при клике на текст в футере
+        const footerText = document.querySelector('footer p');
+        const hiddenLink = document.querySelector('footer .hidden');
+
+        footerText.addEventListener('click', () => {
+            hiddenLink.classList.remove('hidden'); // Показываем слово
+            setTimeout(() => {
+                hiddenLink.classList.add('hidden'); // Скрываем слово через 5 секунд
+            }, 2000);
+        });
     </script>
 </body>
 </html>
+Сделай название команд белыми а не синими
