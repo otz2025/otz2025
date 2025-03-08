@@ -388,13 +388,12 @@
         /* Стили для ссылок команд */
         .team-cell a, .team-name a {
             color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
+            text-decoration: none; /* Убираем подчеркивание */
         }
 
         .team-cell a:hover, .team-name a:hover {
-            color: #dd4710;
-            text-decoration: underline;
+            color: white; /* Оставляем цвет текста белым при наведении */
+            text-decoration: none; /* Убираем подчеркивание при наведении */
         }
 
         @media (max-width: 768px) {
